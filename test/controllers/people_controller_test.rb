@@ -14,4 +14,11 @@ class PeopleControllerTest < ActionController::TestCase
     assert_equal('20', assigns["base"])
     assert_equal('10', assigns["range"])
   end
+
+  test "jsonで渡す" do
+    post :create, { format: :json, age_base: 20, range: 10 }
+    assert_response :success
+    assert_equal(20, assigns["base"])
+    assert_equal(10, assigns["range"])
+  end
 end
